@@ -53,36 +53,37 @@ function getRealArt(button) {
     artworks.forEach(objectID => {
         console.log(objectID);
         //AddArt(objectID);
-        //addImage(objectID);
+        addImage(objectID);
      });//
    //The line below will pull the data from the API
   
- //function addImage(objectID) { 
-//    fetch(
-//     "https://collectionapi.metmuseum.org/public/collection/v1/search?q=sunflowers"
-//   )
-//     //   The line below will pull the data from the stored JSON file
-//     //   fetch("/ex-json/astros.json")
-//     .then(response => {
-//       return response.json();
-//     })
-//     .then(data => {
-//       //console.log(data);
+ function addImage(objectID) { 
+   fetch(
+    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`
+  )
+    //   The line below will pull the data from the stored JSON file
+    //   fetch("/ex-json/astros.json")
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
 
-//       // Update the Message
-//       document.getElementById(
-//         "headline"
-//       ).innerHTML = `Secret Data Is Doing Stuff!`;
+    //   // Update the Message
+    //   document.getElementById(
+    //     "headline"
+    //   ).innerHTML = `Secret Data Is Doing Stuff!`;
 
-//       // Add each Astronaut to their craft
-//       var arts = data.objectIDs;
-//       arts.forEach(objectID => {
-//         //console.log(objectID);
-//         AddArt(objectID);
-//       });
-//     })
-//     .catch(error => {
-//       console.error("Error loading JSON:", error);
-//     });//
+    //   // Add each Astronaut to their craft
+    //   var arts = data.objectIDs;
+    //   arts.forEach(objectID => {
+    //     //console.log(objectID);
+    //     AddArt(objectID);
+    //   });
+    })
+    .catch(error => {
+      console.error("Error loading JSON:", error);
+    });//
 }
 
+}
